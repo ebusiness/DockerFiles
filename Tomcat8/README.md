@@ -29,3 +29,7 @@
 
 # 备注
 如需要定制容器 可以参考Dockerfile
+
+```sh
+docker build --tag ebusinessdocker/tomcat .
+```

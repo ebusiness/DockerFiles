@@ -19,19 +19,19 @@ if [[ ! -d /oautil ]]; then
 
   if [ ${MYSQL_USER}x != ""x ]; then
     mv ${FILENAME} ${FILENAME}.bakforuser
-    sed "s/^user.*/user:'${MYSQL_USER}',/g" ${FILENAME}.bakforuser >${FILENAME}
+    sed "s/user.*/user:'${MYSQL_USER}',/g" ${FILENAME}.bakforuser >${FILENAME}
     rm ${FILENAME}.bakforuser
   fi
 
   if [ ${MYSQL_PASSWORD}x != ""x ]; then
     mv ${FILENAME} ${FILENAME}.bakforpassword
-    sed "s/^password.*/password:'${MYSQL_PASSWORD}',/g" ${FILENAME}.bakforpassword >${FILENAME}
+    sed "s/password.*/password:'${MYSQL_PASSWORD}',/g" ${FILENAME}.bakforpassword >${FILENAME}
     rm ${FILENAME}.bakforpassword
   fi
 
   if [ ${MYSQL_DATABASE}x != ""x ]; then
     mv ${FILENAME} ${FILENAME}.bakfordatabase
-    sed "s/^database.*/database:'${MYSQL_DATABASE}',/g" ${FILENAME}.bakfordatabase >${FILENAME}
+    sed "s/database.*/database:'${MYSQL_DATABASE}',/g" ${FILENAME}.bakfordatabase >${FILENAME}
     rm ${FILENAME}.bakfordatabase
   fi
 fi
