@@ -8,6 +8,10 @@ if [[ ! -d /BPM ]]; then
   git clone https://e-business.co.jp:3000/OA_Group/BPM.git
 fi
 
+cd /BPM
+
+git pull
+
 BEFORE=localhost
 FILENAME=/BPM/src/main/resources/cust/eboa.properties
 
@@ -19,11 +23,6 @@ echo "Mysql server:" ${MYSQL_SERVER}
 
 mv ${FILENAME} ${FILENAME}.bak
 sed "s/${BEFORE}/${MYSQL_SERVER}/g" ${FILENAME}.bak >${FILENAME}
-
-
-cd /BPM
-
-git pull
 
 mvn package
 
