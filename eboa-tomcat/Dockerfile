@@ -28,6 +28,8 @@ RUN chmod +x /enterpoint.sh && \
     mkdir /usr/share/fonts && \
     cd /usr/share/fonts && \
     mv /root/arialuni.ttf /usr/share/fonts/ && \
+    rm /etc/localtime && \
+    ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     yum install -y wget mkfontscale fontconfig libXext && \
     yum clean all && \
     fc-cache -fv
