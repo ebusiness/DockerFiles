@@ -14,7 +14,7 @@ ENV JDK_URL http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$BUILD_VER
 
 ENV TOMCAT_MAJOR 8
 ENV TOMCAT_VERSION 8.0.36
-ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
+ENV TOMCAT_TGZ_URL https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
 
 ENV JAVA_OPTS "-Doffice.home=/opt/openoffice4"
 
