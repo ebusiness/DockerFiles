@@ -1,4 +1,4 @@
-FROM docker:1.11.2
+FROM docker:1.12.6
 
 MAINTAINER Wang Xinguang <wangxinguang@e-business.co.jp>
 
