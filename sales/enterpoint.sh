@@ -44,4 +44,7 @@ if [[ ! -d log/batch ]]; then
   mkdir log/batch
 fi
 
+python manage.py makemigrations eb
+python manage.py migrate eb
+
 python manage.py runserver 0.0.0.0:80
