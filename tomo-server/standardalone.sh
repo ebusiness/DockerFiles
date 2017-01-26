@@ -2,7 +2,7 @@
 
 
 # webhook
-docker run -d --restart=always --name webhook -p 9000:9000 -v $(pwd)/config.json:/config.json -v /var/run/docker.sock:/var/run/docker.sock starboychina/webhook
+docker run -d --restart=always --name webhook -p 9000:9000 -v $(pwd)/webhook.json:/config.json -v /var/run/docker.sock:/var/run/docker.sock starboychina/webhook
 
 # lego
 

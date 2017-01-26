@@ -32,3 +32,9 @@ docker cp $(pwd)/mongodump mongo:/root/dump
 docker exec -it  mongo sh -c 'cd && mongorestore dump'
 
 ```
+
+# old bower_components
+
+```sh
+docker cp /home/ec2-user/tomo-dev/public/bower_components tomo:/tomo-server/public
+```
