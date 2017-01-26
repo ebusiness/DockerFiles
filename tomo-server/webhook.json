@@ -1,0 +1,9 @@
+{
+    "Hooks":[
+        {
+            "Repo":"https://github.com/ebusiness/tomo-server",
+            "Branch":"master",
+            "Shell":"docker restart tomo"
+        }
+    ]
+}
