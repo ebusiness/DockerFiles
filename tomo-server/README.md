@@ -24,9 +24,11 @@ docker build --tag ebusinessdocker/tomo .
 docker exec -it mongo sh -c 'apk add --no-cache mongodb-tools'
 
 # backup
-docker exec -it -v $(pwd)/mongodump:/root/dump mongo sh -c 'cd && mongodump'
+docker exec -it mongo sh -c 'cd && mongodump'
+docker cp mongo:/root/dump $(pwd)/mongodump
 
 # restore
-docker exec -it -v $(pwd)/mongodump:/root/dump mongo sh -c 'cd && mongorestore dump'
+docker cp $(pwd)/mongodump mongo:/root/dump
+docker exec -it  mongo sh -c 'cd && mongorestore dump'
 
 ```
