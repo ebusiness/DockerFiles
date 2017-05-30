@@ -27,10 +27,12 @@ if ! command -v gulp >/dev/null; then
   npm install gulp -g
 fi
 
-git checkout .
+if command -v git >/dev/null; then
+  git checkout .
+fi
 
-cp -p /ssl/cert.pem ${SOURCE_PATH}/resources/cert.pem
-cp -p /ssl/key.pem ${SOURCE_PATH}/resources/key.pem
+cp -f /ssl/cert.pem ${SOURCE_PATH}/resources/cert.pem
+cp -f /ssl/key.pem ${SOURCE_PATH}/resources/key.pem
 
 npm install
 bower install --allow-root
