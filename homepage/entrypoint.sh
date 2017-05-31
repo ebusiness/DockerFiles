@@ -28,7 +28,10 @@ if ! command -v gulp >/dev/null; then
 fi
 
 if command -v git >/dev/null; then
+  echo "checkout ."
   git checkout .
+  echo "pull"
+  git pull
 fi
 
 cp -f /ssl/cert.pem ${SOURCE_PATH}/resources/cert.pem
