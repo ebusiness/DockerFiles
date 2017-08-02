@@ -38,6 +38,8 @@ cp -f /ssl/cert.pem ${SOURCE_PATH}/resources/cert.pem
 cp -f /ssl/key.pem ${SOURCE_PATH}/resources/key.pem
 
 npm install
-bower install --allow-root
-gulp
+
+bower install --allow-root &
+gulp &
+
 npm start > npm.log
