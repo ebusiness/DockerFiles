@@ -21,6 +21,7 @@ RUN apk add --update git py-mysqldb mysql-dev gcc musl-dev && \
     pip --no-cache-dir install matplotlib && \
     pip --no-cache-dir install requests && \
     pip --no-cache-dir install qrcode && \
+    pip --no-cache-dir install pyminizip && \
     chmod +x /root/enterpoint.sh && \
     apk del gcc musl-dev mysql-dev && \
     rm -rf /var/cache/apk/*

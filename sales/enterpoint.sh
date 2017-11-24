@@ -48,4 +48,4 @@ python manage.py makemigrations eb
 python manage.py migrate eb
 
 nohup python batch.py &
-python manage.py runserver 0.0.0.0:80
+python manage.py runserver 0.0.0.0:80 --noreload
