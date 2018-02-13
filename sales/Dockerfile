@@ -20,18 +20,19 @@ RUN apk add qt5-qtbase-dev \
             --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
             --allow-untrusted
 RUN pip --no-cache-dir install django==1.11.4 && \
+    pip --no-cache-dir install djangorestframework==3.6.4 && \
     pip --no-cache-dir install crontab && \
     pip --no-cache-dir install openpyxl && \
     pip --no-cache-dir install xlsxwriter && \
     pip --no-cache-dir install MySQL-python && \
     pip --no-cache-dir install xlrd && \
     pip --no-cache-dir install pdfkit && \
-    pip --no-cache-dir install pandas && \
-    pip --no-cache-dir install pillow && \
+    pip --no-cache-dir install pillow==4.3 && \
     pip --no-cache-dir install matplotlib && \
     pip --no-cache-dir install requests && \
     pip --no-cache-dir install qrcode && \
     pip --no-cache-dir install pyminizip && \
+    pip --no-cache-dir install pandas && \
     chmod +x /root/enterpoint.sh && \
     apk del gcc musl-dev mysql-dev .build-deps && \
     rm -rf /var/cache/apk/*
