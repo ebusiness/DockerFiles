@@ -19,7 +19,7 @@ RUN apk add qt5-qtbase-dev \
             --no-cache \
             --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
             --allow-untrusted
-RUN pip --no-cache-dir install django && \
+RUN pip --no-cache-dir install django==1.11.4 && \
     pip --no-cache-dir install crontab && \
     pip --no-cache-dir install openpyxl && \
     pip --no-cache-dir install xlsxwriter && \
