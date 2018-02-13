@@ -23,24 +23,21 @@ RUN apk add qt5-qtbase-dev \
             --allow-untrusted
 RUN pip --no-cache-dir install django==1.11.4 && \
     pip --no-cache-dir install djangorestframework==3.6.4 && \
-    pip --no-cache-dir install crontab && \
-    pip --no-cache-dir install openpyxl && \
-    pip --no-cache-dir install xlsxwriter && \
-    pip --no-cache-dir install MySQL-python && \
-    pip --no-cache-dir install xlrd && \
-    pip --no-cache-dir install pdfkit && \
+    pip --no-cache-dir install crontab==0.22.0 && \
+    pip --no-cache-dir install openpyxl==2.5.0 && \
+    pip --no-cache-dir install xlsxwriter==1.0.2 && \
+    pip --no-cache-dir install MySQL-python==1.2.5 && \
+    pip --no-cache-dir install xlrd==1.1.0 && \
+    pip --no-cache-dir install pdfkit==0.6.1 && \
     pip --no-cache-dir install pillow==4.3 && \
-    pip --no-cache-dir install matplotlib && \
-    pip --no-cache-dir install requests && \
+    pip --no-cache-dir install matplotlib==2.1.2 && \
+    pip --no-cache-dir install requests==2.18.4 && \
     pip --no-cache-dir install qrcode && \
     pip --no-cache-dir install pyminizip && \
-    pip --no-cache-dir install pandas && \
+    pip --no-cache-dir install pandas==0.22.0 && \
     chmod +x /root/enterpoint.sh && \
     apk del gcc musl-dev mysql-dev .build-deps && \
     rm -rf /var/cache/apk/*
-# matplotlibの$DISPLAYが未定義エラー対策（未検証）
-RUN cp /usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc ~/.config/matplotlib/ && \
-    sed 's/backend\s*:\s*[TKAGGtkagg]{5}/backend      : Agg' ~/.config/matplotlib/matplotlibrc
 # matplotlibの日本語対応（未検証）
 
 
