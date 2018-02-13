@@ -35,6 +35,11 @@ RUN pip --no-cache-dir install django && \
     chmod +x /root/enterpoint.sh && \
     apk del gcc musl-dev mysql-dev .build-deps && \
     rm -rf /var/cache/apk/*
+# matplotlibの$DISPLAYが未定義エラー対策（未検証）
+RUN cp /usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc ~/.config/matplotlib/ && \
+    sed 's/backend\s*:\s*[TKAGGtkagg]{5}/backend      : Agg' ~/.config/matplotlib/matplotlibrc
+# matplotlibの日本語対応（未検証）
+
 
 
 EXPOSE 80
