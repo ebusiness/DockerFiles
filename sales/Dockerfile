@@ -11,7 +11,9 @@ RUN apk add --no-cache --virtual .build-deps \
         libpng-dev \
         freetype-dev \
         zlib \
-        jpeg
+        zlib-dev \
+        jpeg \
+        jpeg-dev
 RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
 RUN apk add --no-cache xvfb ttf-freefont fontconfig dbus
 RUN apk add qt5-qtbase-dev \
