@@ -23,6 +23,7 @@ RUN apk add qt5-qtbase-dev \
             --allow-untrusted
 RUN pip --no-cache-dir install django==1.11.4 && \
     pip --no-cache-dir install djangorestframework==3.6.4 && \
+    pip --no-cache-dir install django-filter==1.0.4 && \
     pip --no-cache-dir install crontab==0.22.0 && \
     pip --no-cache-dir install openpyxl==2.5.0 && \
     pip --no-cache-dir install xlsxwriter==1.0.2 && \
