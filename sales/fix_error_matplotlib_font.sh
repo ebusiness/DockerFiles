@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# matplotlib‚Ì“ú–{Œêİ’è
+# matplotlibã®æ—¥æœ¬èªè¨­å®š
 if [[ ! -d ~/.fonts ]]; then
   mkdir ~/.fonts
 fi

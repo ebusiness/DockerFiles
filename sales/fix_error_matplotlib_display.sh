@@ -1,6 +1,14 @@
 #!/bin/sh
 
-# matplotlib‚Ì$DISPLAY‚ª–¢’è‹`ƒGƒ‰[‘Îô
+# matplotlibã®$DISPLAYãŒæœªå®šç¾©ã‚¨ãƒ©ãƒ¼å¯¾ç­–
+if [[ ! -d ~/.config ]]; then
+  mkdir ~/.config
+fi
+
+if [[ ! -d ~/.config/matplotlib ]]; then
+  mkdir ~/.config/matplotlib
+fi
+
 cp /usr/local/lib/python2.7/site-packages/matplotlib/mpl-data/matplotlibrc ~/.config/matplotlib/matplotlibrc.bak
 FILENAME=~/.config/matplotlib/matplotlibrc
 
