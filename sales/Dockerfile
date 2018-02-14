@@ -1,7 +1,9 @@
 FROM python:2.7-alpine
 MAINTAINER Wang Xinguang <wangxinguang@e-business.co.jp>
 
-COPY enterpoint.sh /root/enterpoint.sh
+WORKDIR /root
+
+ADD . /root
 
 RUN apk add --update git py-mysqldb mysql-dev gcc musl-dev
 RUN apk add --no-cache --virtual .build-deps \
@@ -37,11 +39,13 @@ RUN pip --no-cache-dir install django==1.11.4 && \
     pip --no-cache-dir install pyminizip && \
     pip --no-cache-dir install pandas==0.22.0 && \
     chmod +x /root/enterpoint.sh && \
+    ln -s /root/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf && \
     apk del gcc musl-dev mysql-dev .build-deps && \
     rm -rf /var/cache/apk/*
-# matplotlibの日本語対応（未検証）
 
-
+# エラー修正
+RUN sh /root/fix_error_matplotlib_display.sh && \
+       /root/fix_error_matplotlib_font.sh
 
 EXPOSE 80
 
