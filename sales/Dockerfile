@@ -39,6 +39,7 @@ RUN pip --no-cache-dir install django==1.11.4 && \
     pip --no-cache-dir install pyminizip && \
     pip --no-cache-dir install pandas==0.22.0 && \
     chmod +x /root/enterpoint.sh && \
+    chmod +x /root/wkhtmltopdf.sh && \
     chmod +x /root/fix_error_matplotlib_display.sh && \
     chmod +x /root/fix_error_matplotlib_font.sh && \
     ln -s /root/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf && \

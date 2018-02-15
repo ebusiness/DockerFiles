@@ -20,5 +20,7 @@ if [[ ! -d log/batch ]]; then
   mkdir log/batch
 fi
 
+wkhtmltopdf https://www.google.co.jp /root/output.pdf
+
 nohup python batch.py &
 python manage.py runserver 0.0.0.0:80 --noreload
