@@ -1,28 +1,25 @@
-FROM python:2.7-alpine
-MAINTAINER Wang Xinguang <wangxinguang@e-business.co.jp>
+FROM ubuntu:18.04
+LABEL maintainer="wangxinguang@e-business.co.jp"
 
 WORKDIR /root
 
 ADD . /root
 
-RUN apk add --update git py-mysqldb mysql-dev gcc musl-dev
-RUN apk add --no-cache --virtual .build-deps \
-        build-base \
-        g++ \
-        python-dev \
-        libpng-dev \
-        freetype-dev \
-        zlib \
-        zlib-dev \
-        jpeg \
-        jpeg-dev
-RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
-RUN apk add --no-cache xvfb ttf-freefont fontconfig dbus
-RUN apk add qt5-qtbase-dev \
-            wkhtmltopdf \
-            --no-cache \
-            --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
-            --allow-untrusted
+RUN apt-get update -y
+RUN apt-get install -y git python2.7 python-pip libmysqlclient-dev zip convmv
+# install wkhtmltopdf
+RUN apt-get install -y build-essential libssl-dev libxrender-dev gdebi
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install xorg
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python-tk tk-dev
+RUN gdebi --n libpng12-0_1.2.54-1ubuntu1_amd64.deb
+RUN gdebi --n wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+# Locale
+RUN apt-get install -y language-pack-ja && \
+    locale-gen ja_JP.UTF-8
+ENV LANG ja_JP.UTF-8
+ENV LANGUAGE ja_JP:ja
+ENV LC_ALL ja_JP.UTF-8
+# pythonのライブラリー
 RUN pip --no-cache-dir install django==1.11.4 && \
     pip --no-cache-dir install djangorestframework==3.6.4 && \
     pip --no-cache-dir install django-filter==1.0.4 && \
@@ -37,19 +34,17 @@ RUN pip --no-cache-dir install django==1.11.4 && \
     pip --no-cache-dir install requests==2.18.4 && \
     pip --no-cache-dir install qrcode && \
     pip --no-cache-dir install pyminizip && \
-    pip --no-cache-dir install pandas==0.22.0 && \
-    chmod +x /root/enterpoint.sh && \
-    chmod +x /root/wkhtmltopdf.sh && \
-    chmod +x /root/fix_error_matplotlib_display.sh && \
-    chmod +x /root/fix_error_matplotlib_font.sh && \
-    ln -s /root/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf && \
-    apk del gcc musl-dev mysql-dev .build-deps && \
-    rm -rf /var/cache/apk/*
+    pip --no-cache-dir install pandas==0.22.0
 
-# エラー修正
+RUN chmod +x /root/enterpoint.sh && \
+    chmod +x /root/fix_error_matplotlib_display.sh && \
+    chmod +x /root/fix_font.sh
+
 RUN sh /root/fix_error_matplotlib_display.sh && \
-    sh /root/fix_error_matplotlib_font.sh
+    sh /root/fix_font.sh && \
+    rm libpng12-0_1.2.54-1ubuntu1_amd64.deb && \
+    rm wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
 
 EXPOSE 80
 
-ENTRYPOINT ["/root/enterpoint.sh"]
+# ENTRYPOINT ["/root/enterpoint.sh"]
